@@ -2,16 +2,37 @@
 
 ### We will be exposing API for each functionality mentioned in *The functions that the library management system can do* (Top level README)
 
-1. booklist schema structure
+
+## Details about Schema Structures
+1. Booklist Schema Structure
 ```js
 let schema = {
-	"bookid": uuid
-	"title":string
-	"Authors": string
-	"publisher": string
+	"bookId": uuid,
+	"title":string,
+	"authors": string,
+	"publisher": string,
 	"bookCopy":[
+		{
+		"bookCopyId": (bookid +'/'+ uuid),
+		"isBorrowed": bool,
+		"dueDate": Date
+		}
+	]
+	"rack":[
 		null,
-	    bookCopyUuid
+		bookCopyId
+	]
+}
+```
+
+2. User Schema Structure
+```js
+let schema = {
+	"userId": uuid,
+	"username": string,
+	"booksBorrowed":[
+		null,
+		bookCopyId
 	]
 }
 ```
