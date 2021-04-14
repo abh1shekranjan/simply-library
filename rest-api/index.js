@@ -1,12 +1,14 @@
-const express = require("express")
-const mongoose = require("mongoose")
-const bodyParser = require("body-parser");
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const cors = require('cors');
-const { db_url } = require("./db_config");
-const route_conf = require("./routes");
+const { db_url } = require('./config/db_config');
+const route_conf = require('./routes');
 const { routes } = route_conf;
-const { addBook } = require("./BookListActions/addBook");
-
+const { addBook } = require('./BookListActions/addBook');
+const { listUserBook } = require('./BookListActions/listUserBook');
+const { returnBook } = require('./BookListActions/returnBook');
+const { searchBook } = require('./BookListActions/searchBook');
 const app = express();
 
 app.use(cors());
@@ -17,19 +19,22 @@ const PORT = 8000;
 
 // db connection
 mongoose.connect(db_url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-mongoose.connection.on("error", err => {
-    console.log("connection error", err)
-})
-mongoose.connection.on("connected", (err, res) => {
-    console.log("mongoose is connected");
-})
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+mongoose.connection.on('error', (err) => {
+  console.log('connection error', err);
+});
+mongoose.connection.on('connected', (err, res) => {
+  console.log('mongoose is connected');
+});
 
 app.listen(PORT, () => {
-    console.log(`app is listening to PORT ${PORT}`)
-})
+  console.log(`app is listening to PORT ${PORT}`);
+});
 
 // Routers handler
-app.post(routes.ADD_BOOK, addBook)
+app.post(routes.ADD_BOOK, addBook);
+app.post(routes.RETURN_BOOK, returnBook);
+app.post(routes.LIST_USER_BOOK, listUserBook);
+app.post(routes.SEARCH_BOOK, searchBook);
