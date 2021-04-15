@@ -6,6 +6,8 @@ const { db_url } = require('./config/db_config');
 const route_conf = require('./routes');
 const { routes } = route_conf;
 const { addBook } = require('./BookListActions/addBook');
+const { removeBook } = require('./BookListActions/removeBook');
+const { borrowBook } = require('./BookListActions/borrowBook');
 const { listUserBook } = require('./BookListActions/listUserBook');
 const { returnBook } = require('./BookListActions/returnBook');
 const { searchBook } = require('./BookListActions/searchBook');
@@ -35,6 +37,8 @@ app.listen(PORT, () => {
 
 // Routers handler
 app.post(routes.ADD_BOOK, addBook);
+app.post(routes.REMOVE_BOOK, removeBook);
+app.post(routes.BORROW_BOOK, borrowBook);
 app.post(routes.RETURN_BOOK, returnBook);
 app.post(routes.LIST_USER_BOOK, listUserBook);
 app.post(routes.SEARCH_BOOK, searchBook);
