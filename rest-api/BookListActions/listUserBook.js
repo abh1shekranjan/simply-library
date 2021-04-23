@@ -12,7 +12,7 @@ function listUserBook(req, res) {
     })
     .then((result) => {
       if (!result) {
-        return res.status(401).json({ msg: 'User not Authorized' });
+        throw new Error(ERRORS.USER_NOT_AUTHORIZED);
       } else {
         res.json(result.borrowedBooks);
       }
@@ -20,6 +20,8 @@ function listUserBook(req, res) {
     .catch((e) => {
       if (e.message === ERRORS.BAD_REQUEST) {
         return res.status(400).send('Bad request');
+      } else if (e.message === ERRORS.USER_NOT_AUTHORIZED) {
+        return res.status(401).json({ msg: 'User not Authorized' });
       } else {
         return res.status(500).send('Internal Error');
       }
