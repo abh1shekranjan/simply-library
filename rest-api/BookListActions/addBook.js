@@ -9,8 +9,6 @@ const { uuid } = require('uuidv4');
  * @param {object} res
  */
 function addBook(req, res) {
-  console.dir(req.body, { depth: null });
-  console.dir(req.params.id, { depth: null });
   // get the booklist db
   const userCollection = mongoose.connection.collection(db_tables.BOOK_LIST);
   const { title, authors, publisher } = req.body;
