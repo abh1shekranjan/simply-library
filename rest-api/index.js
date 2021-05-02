@@ -44,6 +44,6 @@ app.post(routes.REMOVE_BOOK, removeBook);
 app.post(routes.BORROW_BOOK, borrowBook);
 app.post(routes.RETURN_BOOK, returnBook);
 app.post(routes.LIST_USER_BOOK, listUserBook);
-app.post(routes.SEARCH_BOOK, searchBook);
+app.post(routes.SEARCH_BOOK, auth, searchBook);
 app.post(routes.REGISTER_USER, registerUser);
-app.get(routes.LOGIN_USER, auth, loginUser);
+app.post(routes.LOGIN_USER, loginUser);

@@ -4,6 +4,7 @@ const { ERRORS } = require('../error');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const CryptoJS = require('crypto-js');
+const SHA256 = require('crypto-js/sha256');
 
 /**
  * @description Add a book in the booklist
@@ -32,36 +33,37 @@ function registerUser(req, res) {
       })
     )
     .then((result) => {
+      console.log(result);
+
       // user already exists
       if (result) {
+        console.log(ERRORS.USER_ALREADY_EXISTS);
         throw new Error(ERRORS.USER_ALREADY_EXISTS);
       } else {
         //Encrypting the password using crypto js
-        let userPassword = CryptoJS.AES.encrypt(
-          password,
-          config.get('jwtSecret')
-        ).toString();
+        // let userPassword = CryptoJS.AES.encrypt(
+        //   password,
+        //   config.get('jwtSecret')
+        // ).toString();
+        
         return users.insertOne({
           name: name,
           email: email,
-          password: userPassword,
+          // password: userPassword,
+          password: SHA256(password).toString(), // encryptedPassword
           borrowedBooks: [],
         });
       }
     })
     .then((result) => {
+      console.log(result)
       if (
         result.insertedCount === 1 ||
         (result.result ? result.result.ok : false)
       ) {
-        const payload = {
-          user: {
-            id: email,
-          },
-        };
-
+       
         jwt.sign(
-          payload,
+          result._id,
           config.get('jwtSecret'),
           { expiresIn: '5 days' },
           (err, token) => {
@@ -74,6 +76,7 @@ function registerUser(req, res) {
       }
     })
     .catch((e) => {
+      console.log(e,e.message);
       if (e.message === ERRORS.BAD_REQUEST) {
         return res.status(400).send('Bad request');
       } else if (e.message === ERRORS.USER_ALREADY_EXISTS) {
