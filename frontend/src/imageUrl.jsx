@@ -1,0 +1,2 @@
+export const loginImage = "https://image.freepik.com/free-vector/online-registration-sign-up-with-man-sitting-near-smartphone_268404-95.jpg"
+export const signUpImage ="https://image.freepik.com/free-vector/online-registration-sign-up-with-man-using-laptop_268404-97.jpg"
