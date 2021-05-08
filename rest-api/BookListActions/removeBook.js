@@ -31,10 +31,10 @@ function removeBook(req, res) {
           (item) => item.bookCopyId !== bookCopyId
         );
 
-        // remove id from rack and put null
+        // remove id from rack and deleting the extra space
         for (let i in result.rack) {
           if (result.rack[i] === bookCopyId) {
-            result.rack[i] = null;
+            result.rack.splice(i, 1);
             break;
           }
         }
