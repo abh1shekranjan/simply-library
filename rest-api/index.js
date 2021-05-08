@@ -43,7 +43,7 @@ app.post(routes.ADD_BOOK, addBook);
 app.post(routes.REMOVE_BOOK, removeBook);
 app.post(routes.BORROW_BOOK, borrowBook);
 app.post(routes.RETURN_BOOK, returnBook);
-app.post(routes.LIST_USER_BOOK, listUserBook);
+app.get(routes.LIST_USER_BOOK, auth, listUserBook);
 app.post(routes.SEARCH_BOOK, auth, searchBook);
 app.post(routes.REGISTER_USER, registerUser);
 app.post(routes.LOGIN_USER, loginUser);

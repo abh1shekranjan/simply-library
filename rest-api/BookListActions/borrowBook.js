@@ -1,18 +1,17 @@
-const { db_tables } = require("../config/db_config");
-const mongoose = require("mongoose");
-const { ERRORS } = require("../error");
-
+const { db_tables } = require('../config/db_config');
+const mongoose = require('mongoose');
+const { ERRORS } = require('../error');
 
 /**
- * @description 
- *      
- * @param {object} req 
- * @param {object} res 
+ * @description Borrow a book
+ *
+ * @param {object} req
+ * @param {object} res
  */
 function borrowBook(req, res) {
-    res.status(200).send('not implemented yet by Satadhi');
+  res.status(200).send('not implemented yet by Satadhi');
 }
 
 module.exports = {
-    borrowBook
-}
+  borrowBook,
+};
