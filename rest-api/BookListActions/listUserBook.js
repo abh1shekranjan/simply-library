@@ -1,18 +1,21 @@
 const { db_tables } = require('../config/db_config');
 const mongoose = require('mongoose');
 const { ERRORS } = require('../error');
-const ObjectId = require('mongodb').ObjectID;
+/**
+ * @description List all borrowed books of a user
+ *
+ * @param {object} req
+ * @param {object} res
+ */
 
 function listUserBook(req, res) {
-  const user = mongoose.connection.collection(db_tables.USER_LIST);
+  const users = mongoose.connection.collection(db_tables.USER_LIST);
   Promise.resolve()
-    .then(() => {
-      const id = new ObjectId(req.user);
-      console.log(id);
-      user.findOne({
-        _id: id,
-      });
-    })
+    .then(() =>
+      users.findOne({
+        email: req.user.email,
+      })
+    )
     .then((result) => {
       console.log(result);
       if (!result) {

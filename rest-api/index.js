@@ -41,9 +41,9 @@ app.listen(PORT, () => {
 // Routers handler
 app.post(routes.ADD_BOOK, addBook);
 app.post(routes.REMOVE_BOOK, removeBook);
-app.post(routes.BORROW_BOOK, borrowBook);
+app.post(routes.BORROW_BOOK, auth, borrowBook);
 app.post(routes.RETURN_BOOK, returnBook);
 app.get(routes.LIST_USER_BOOK, auth, listUserBook);
-app.post(routes.SEARCH_BOOK, auth, searchBook);
+app.get(routes.SEARCH_BOOK, auth, searchBook);
 app.post(routes.REGISTER_USER, registerUser);
 app.post(routes.LOGIN_USER, loginUser);

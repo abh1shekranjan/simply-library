@@ -4,6 +4,7 @@ const { ERRORS } = require('../error');
 const config = require('config');
 const CryptoJS = require('crypto-js');
 const SHA256 = require('crypto-js/sha256');
+const jwt = require('jsonwebtoken');
 /**
  * @description Login a user
  * @param {object} req
@@ -24,7 +25,7 @@ async function loginUser(req, res) {
     if (user) {
       //sending access token
       jwt.sign(
-        user._id,
+        { email: email },
         config.get('jwtSecret'),
         { expiresIn: '5 days' },
         (err, token) => {

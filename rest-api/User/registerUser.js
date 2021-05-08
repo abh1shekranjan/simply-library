@@ -59,7 +59,7 @@ function registerUser(req, res) {
         result.insertedCount === 1 ||
         (result.result ? result.result.ok : false)
       ) {
-        const payload = { id: result.ops[0]._id };
+        const payload = { email: email };
         jwt.sign(
           payload,
           config.get('jwtSecret'),
