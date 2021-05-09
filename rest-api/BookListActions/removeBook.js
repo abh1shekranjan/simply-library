@@ -26,6 +26,7 @@ function removeBook(req, res) {
     .then(() => userCollection.findOne({ bookId: bookCopyId.split('/')[0] }))
     .then((result) => {
       if (result) {
+        //TODO  add a check if the book copy is not present
         // find id in bookCopy and remove the entry.
         result.bookCopy = result.bookCopy.filter(
           (item) => item.bookCopyId !== bookCopyId
