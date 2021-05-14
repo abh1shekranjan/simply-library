@@ -1,0 +1,62 @@
+.authentication-card {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10vh;
+    height: 80vh;
+    margin-left: 10%;
+}
+
+.authentication-card-child {
+    width: 50%;
+    overflow: auto;
+}
+
+.authentication-image {
+    display: flex;
+    align-items: center;
+}
+
+.text-field-80 {
+    width: 80%;
+}
+
+.login-text-field {
+    margin-top: 5% !important;
+}
+
+.authentication-header {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.login-header {
+    margin-top: 20%;
+}
+
+.signup-header {
+    margin-top:5%;
+}
+
+.authentication-button-container {
+    margin-top: 5%;
+    display: flex;
+    width: 80%;
+    justify-content: center;
+}
+
+.authentication-lower-text {
+    margin-top: 4%;
+}
+
+.authentication-progress-linear {
+    width: 80%;
+    margin-top: 10vh;
+    margin-left: 10%;
+}
+
+.authentication-error {
+    width: 75%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}

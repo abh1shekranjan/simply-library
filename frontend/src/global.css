@@ -1,0 +1,55 @@
+.d-flex-spc-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.ml-2 {
+    margin-left: 2%;
+}
+
+.m-5 {
+    margin: 5%;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fit-image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.w-25 {
+    width: 25% !important;
+}
+
+.blue-grad-button {
+    background: linear-gradient(to bottom right, #3399ff 0%, #99ccff 100%);
+}
+
+.blue-grad-button:disabled {
+    background: gray;
+}
+
+.link-text {
+    font-weight: bold;
+    color: dodgerblue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.disable-div {
+    pointer-events: none;
+    opacity: 0.5;
+}
